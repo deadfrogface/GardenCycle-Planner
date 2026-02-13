@@ -1,9 +1,50 @@
 const STORAGE_KEY = 'gardencycle-plants';
+const SEEDED_KEY = 'gardencycle-seeded';
+
+/** 30 häufigste Gartenpflanzen mit typischer Wachstumsdauer (Tage). Nur bei leerem Speicher einmalig laden. */
+const DEFAULT_PLANTS = [
+  { name: 'Tomate', plantDate: '2025-03-15', growthDays: 80 },
+  { name: 'Gurke', plantDate: '2025-03-15', growthDays: 65 },
+  { name: 'Karotte', plantDate: '2025-03-15', growthDays: 75 },
+  { name: 'Salat', plantDate: '2025-03-15', growthDays: 50 },
+  { name: 'Kartoffel', plantDate: '2025-03-15', growthDays: 100 },
+  { name: 'Zwiebel', plantDate: '2025-03-15', growthDays: 100 },
+  { name: 'Knoblauch', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Paprika', plantDate: '2025-03-15', growthDays: 75 },
+  { name: 'Zucchini', plantDate: '2025-03-15', growthDays: 55 },
+  { name: 'Kürbis', plantDate: '2025-03-15', growthDays: 100 },
+  { name: 'Buschbohnen', plantDate: '2025-03-15', growthDays: 60 },
+  { name: 'Erbsen', plantDate: '2025-03-15', growthDays: 70 },
+  { name: 'Spinat', plantDate: '2025-03-15', growthDays: 45 },
+  { name: 'Grünkohl', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Radieschen', plantDate: '2025-03-15', growthDays: 28 },
+  { name: 'Rote Bete', plantDate: '2025-03-15', growthDays: 65 },
+  { name: 'Weißkohl', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Brokkoli', plantDate: '2025-03-15', growthDays: 70 },
+  { name: 'Blumenkohl', plantDate: '2025-03-15', growthDays: 75 },
+  { name: 'Erdbeere', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Himbeere', plantDate: '2025-03-15', growthDays: 365 },
+  { name: 'Basilikum', plantDate: '2025-03-15', growthDays: 60 },
+  { name: 'Petersilie', plantDate: '2025-03-15', growthDays: 75 },
+  { name: 'Dill', plantDate: '2025-03-15', growthDays: 45 },
+  { name: 'Minze', plantDate: '2025-03-15', growthDays: 60 },
+  { name: 'Rosmarin', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Thymian', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Schnittlauch', plantDate: '2025-03-15', growthDays: 60 },
+  { name: 'Mais', plantDate: '2025-03-15', growthDays: 90 },
+  { name: 'Aubergine', plantDate: '2025-03-15', growthDays: 85 }
+];
 
 function loadPlants() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    let list = raw ? JSON.parse(raw) : [];
+    if (list.length === 0 && !localStorage.getItem(SEEDED_KEY)) {
+      list = DEFAULT_PLANTS.slice();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      localStorage.setItem(SEEDED_KEY, '1');
+    }
+    return list;
   } catch {
     return [];
   }
