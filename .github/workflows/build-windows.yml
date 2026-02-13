@@ -1,5 +1,5 @@
 # Build der Windows-Setup.exe (NSIS). Manuell: Actions → Build Windows Installer → Run workflow.
-# Artifact „GardenCycle-Planner-Windows-Installer“ enthält die Setup.exe.
+# Artifact „GardenCycle-Pro-Windows-Installer“ enthält die Setup.exe.
 name: Build Windows Installer
 
 on:
@@ -30,5 +30,5 @@ jobs:
       - name: Upload Setup.exe
         uses: actions/upload-artifact@v4
         with:
-          name: GardenCycle-Planner-Windows-Installer
+          name: GardenCycle-Pro-Windows-Installer
           path: dist/

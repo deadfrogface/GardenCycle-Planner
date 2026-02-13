@@ -11,7 +11,7 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": { "jspdf": "^2.5.2" },
   "devDependencies": {
     "electron": "^28.0.0",
     "electron-builder": "^24.9.1",
@@ -20,7 +20,7 @@
   },
   "build": {
     "appId": "com.gardencycle.planner",
-    "productName": "GardenCycle Planner",
+    "productName": "GardenCycle Pro",
     "icon": "build/icon.ico",
     "directories": { "output": "dist" },
     "publish": null,

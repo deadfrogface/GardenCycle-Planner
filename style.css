@@ -1,0 +1,65 @@
+* { box-sizing: border-box; }
+
+body { margin: 0; font-family: Segoe UI, system-ui, sans-serif; background: #f0f2f1; color: #222; }
+
+.app { display: flex; min-height: 100vh; }
+
+.nav { width: 220px; background: #2d5a3d; color: #fff; padding: 16px 0; display: flex; flex-direction: column; }
+.nav-title { margin: 0 16px 20px; font-size: 1.1rem; font-weight: 600; }
+.nav-list { list-style: none; margin: 0; padding: 0; flex: 1; }
+.nav-list a { display: block; padding: 10px 16px; color: rgba(255,255,255,0.9); text-decoration: none; }
+.nav-list a:hover, .nav-list a.active { background: rgba(0,0,0,0.15); color: #fff; }
+.nav-export { padding: 16px; border-top: 1px solid rgba(255,255,255,0.2); }
+.nav-export button { display: block; width: 100%; margin-bottom: 8px; padding: 8px; background: #1a3d28; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+.nav-export button:hover { background: #244d32; }
+.nav-export button:last-child { margin-bottom: 0; }
+
+.main { flex: 1; padding: 24px; overflow: auto; }
+.view { display: block; }
+.view.hidden { display: none !important; }
+
+.card { background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 20px; margin-bottom: 20px; }
+.card h2 { margin: 0 0 16px; font-size: 1.15rem; font-weight: 600; }
+
+.form-row { margin-bottom: 12px; }
+.form-row label { display: block; margin-bottom: 4px; font-size: 0.9rem; }
+.form-row input, .form-row select { width: 100%; max-width: 320px; padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; }
+.form-row input:focus, .form-row select:focus { outline: none; border-color: #2d5a3d; }
+.form-actions { margin-top: 16px; }
+.form-error { color: #c62828; font-size: 0.85rem; margin-top: 4px; }
+.form-error.hidden { display: none; }
+
+.btn { padding: 8px 18px; border: none; border-radius: 4px; font-size: 0.95rem; cursor: pointer; }
+.btn-primary { background: #2d5a3d; color: #fff; }
+.btn-primary:hover { background: #244d32; }
+.btn-danger { background: #c62828; color: #fff; padding: 4px 12px; font-size: 0.85rem; }
+.btn-danger:hover { background: #b71c1c; }
+.btn-small { padding: 4px 10px; font-size: 0.85rem; }
+
+table { width: 100%; border-collapse: collapse; }
+thead th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #ddd; font-weight: 600; font-size: 0.9rem; }
+thead th.sortable { cursor: pointer; user-select: none; }
+thead th.sortable:hover { color: #2d5a3d; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+tbody tr:hover { background: #f9f9f9; }
+
+.empty-msg { color: #666; font-size: 0.9rem; }
+.warning-box { background: #fff3e0; border: 1px solid #ffb74d; border-radius: 4px; padding: 10px 12px; margin-bottom: 12px; font-size: 0.9rem; }
+
+.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.dashboard-card { background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 20px; }
+.dashboard-card h3 { margin: 0 0 12px; font-size: 1rem; color: #2d5a3d; }
+.dashboard-card ul { margin: 0; padding: 0; list-style: none; }
+.dashboard-card li { padding: 4px 0; font-size: 0.9rem; }
+
+.calendar-month { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 20px; }
+.calendar-month .day-head { font-weight: 600; font-size: 0.8rem; padding: 8px; text-align: center; }
+.calendar-month .day-cell { min-height: 80px; padding: 6px; background: #fff; border: 1px solid #eee; font-size: 0.8rem; }
+.calendar-month .day-cell .date-num { font-weight: 600; margin-bottom: 4px; }
+.calendar-month .day-cell .event { margin: 2px 0; padding: 2px 4px; background: #e8f5e9; border-radius: 2px; }
+.calendar-filters { margin-bottom: 16px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.calendar-filters select { padding: 6px 10px; border: 1px solid #ccc; border-radius: 4px; }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal-overlay.hidden { display: none; }
+.modal { background: #fff; border-radius: 8px; padding: 24px; max-width: 480px; width: 90%; max-height: 90vh; overflow: auto; }

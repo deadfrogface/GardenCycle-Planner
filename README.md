@@ -1,11 +1,11 @@
-# GardenCycle Planner
+# GardenCycle Pro
 
-Windows-Desktop-Programm zur Planung von Pflanz- und Erntezyklen ohne Cloud. Alle Daten werden lokal gespeichert (LocalStorage).
+Professioneller Windows-Desktop-Planer für Garten und Anbau: Saisonplanung, Beete, Pflanzendatenbank, Kalender und Fruchtfolge – vollständig offline, Daten in AppData als JSON.
 
 ## Anforderungen
 
 - Node.js (z. B. LTS)
-- Windows (Zielplattform)
+- Windows 10/11 (Zielplattform)
 
 ## Entwicklung
 
@@ -16,18 +16,26 @@ npm start
 
 ## Build (NSIS-Installer)
 
-Node.js muss installiert und im PATH verfügbar sein. Dann:
-
 ```bash
-npm install
 npm run build
 ```
 
-Die **Setup.exe** liegt anschließend im Ordner `dist/` (NSIS-Installer für Windows).
+Die **Setup.exe** liegt im Ordner `dist/`. Die App startet ohne Developer-Konsole.
 
 ## Funktionen
 
-- Pflanzen anlegen (Name, Pflanzdatum, Wachstumsdauer in Tagen)
-- Automatische Berechnung des Erntedatums
-- Übersicht aller Pflanzen in einer sortierbaren Tabelle
-- Persistente lokale Speicherung, App läuft offline
+- **Pflanzendatenbank:** Name, Kategorie, Vorkultur, Keim-/Wachstumsdauer, Abstände, Erntezeitraum, Saison; 30 Standard-Pflanzen beim ersten Start
+- **Beete:** Name, Länge, Breite, Typ (Freiland, Gewächshaus, Hochbeet); Gesamtfläche und Belegung
+- **Saisonplanung:** Pflanze + Beet + Pflanzdatum; automatisch Keimdatum, Umpflanzdatum, Erntestart, Ernteende
+- **Kalender:** Monatsansicht und Liste, Filter nach Pflanze/Beet/Kategorie
+- **Fruchtfolge:** Warnung bei gleicher Pflanze oder Familie hintereinander im selben Beet
+- **Export:** Saison als CSV oder PDF
+- **Speicherung:** Eine JSON-Datei im User-AppData-Ordner, automatisch geladen und gespeichert
+
+## Projektstruktur
+
+- `main.js` – Electron Main, Fenster, IPC (Storage, Export)
+- `preload.js` – Bridge für Renderer
+- `index.html`, `style.css`, `app.js` – UI
+- `modules/` – plants, beds, planner, calendar, storage
+- `data/defaultPlants.json` – Standard-Pflanzenliste
