@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GardenCycle Planner</title>
+  <link rel="stylesheet" href="renderer.css">
+</head>
+<body>
+  <header>
+    <h1>GardenCycle Planner</h1>
+  </header>
+
+  <section class="form-section">
+    <h2>Neue Pflanze anlegen</h2>
+    <form id="plant-form">
+      <div class="form-row">
+        <label for="plant-name">Name</label>
+        <input type="text" id="plant-name" required placeholder="z. B. Tomate">
+      </div>
+      <div class="form-row">
+        <label for="plant-date">Pflanzdatum</label>
+        <input type="date" id="plant-date" required>
+      </div>
+      <div class="form-row">
+        <label for="growth-days">Wachstumsdauer (Tage)</label>
+        <input type="number" id="growth-days" required min="1" placeholder="z. B. 90">
+      </div>
+      <div class="form-actions">
+        <button type="submit">Hinzufügen</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="table-section">
+    <h2>Übersicht aller Pflanzen</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th id="sort-plant-date" class="sortable" data-sort="plantDate">Pflanzdatum</th>
+          <th>Wachstumsdauer (Tage)</th>
+          <th id="sort-harvest-date" class="sortable" data-sort="harvestDate">Erntedatum</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="plant-tbody">
+      </tbody>
+    </table>
+    <p id="empty-message" class="empty-message">Noch keine Pflanzen angelegt.</p>
+  </section>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
