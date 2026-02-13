@@ -22,9 +22,7 @@ jobs:
         run: npm install
 
       - name: Build icon
-        run: |
-          node build/svg-to-ico.js
-          if (!(Test-Path build/icon.ico)) { node build/create-placeholder-ico.js }
+        run: node build/svg-to-ico.js
 
       - name: Build Windows installer
         run: npm run build
